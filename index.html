@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>跳转中...</title>
+    <script>
+    // 自动跳转逻辑
+    function tryJump() {
+        // 微信Scheme码（替换成你自己的）
+        const scheme = 'weixin://dl/business/?t=XXXXX'
+        
+        // 尝试跳转
+        window.location.href = scheme
+        
+        // 3秒后检查是否跳转成功
+        setTimeout(() => {
+            if (!document.hidden) {
+                document.getElementById("manual").style.display = "block"
+            }
+        }, 3000)
+    }
+    </script>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; padding: 50px; }
+        #manual { display: none; margin-top: 20px; }
+        button { padding: 10px 20px; background: #07C160; color: white; border: none; border-radius: 5px; }
+    </style>
+</head>
+<body onload="tryJump()">
+    <h2>正在跳转微信...</h2>
+    <div id="manual">
+        <p>自动跳转失败？请手动操作：</p>
+        <button onclick="window.location.href='weixin://dl/business/?t=XXXXX'">
+            点击打开微信
+        </button>
+        <p>或微信搜索小程序：<strong>XXX小程序</strong></p>
+    </div>
+</body>
+</html>
